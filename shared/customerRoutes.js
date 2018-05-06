@@ -9,7 +9,6 @@ var Customer = require('./customer.model');
 // Defined store route
 customerRoutes.route('/add').post(function (req, res) {
   var customer = new Customer(req.body);
-  console.log(customer);
   customer.save()
     .then(item => {
       res.status(200).json(item);
