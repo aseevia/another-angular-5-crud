@@ -1,0 +1,27 @@
+<h3 class="mt-5 mb-3">Customer Register</h3>
+<table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Gender</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.name.first }} {{ customer.name.last }}
+          <span class="d-block small text-muted">id: {{ customer._id }}</span>
+      </td>
+      <td>{{ customer.gender }}</td>
+      <td>
+        <a [routerLink]="['/edit', customer._id]" class="btn">
+          <i class="fa fa-pencil-square-o"></i>
+        </a>
+        <a (click)="deleteCustomer(customer._id)" class="btn">
+          <i class="fa fa-trash-o"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
