@@ -7,7 +7,7 @@ const express = require('express'),
   customerRoutes = require('./shared/customerRoutes');
 
 mongoose.Promise = global.Promise;
-var db = mongoose.connect(config.DB).then(
+var db = mongoose.connect(process.env.MONGODB_URI).then(
   () => {
     console.log('Database is connected')
   },
@@ -17,7 +17,7 @@ var db = mongoose.connect(config.DB).then(
 );
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8080;
 
 // Point static path to public
 app.use(express.static(path.join(__dirname, 'public')));
