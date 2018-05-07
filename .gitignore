@@ -11,7 +11,6 @@
 /node_modules
 
 # IDEs and editors
-.env
 /.idea
 .project
 .classpath
@@ -40,6 +39,14 @@ testem.log
 # e2e
 /e2e/*.js
 /e2e/*.map
+
+# Local development
+*.env
+*.dev
+
+# Docker
+Dockerfile
+docker-compose.yml
 
 # System Files
 .DS_Store
