@@ -5,7 +5,10 @@ var customerRoutes = express.Router();
 // Require Customer model in our routes module
 var Customer = require('./customer.model');
 
-// Defined store route
+/**
+* Add new customer route
+* @returns {json} customer data if successful, or error object.
+*/
 customerRoutes.route('/add').post(function (req, res) {
   var customer = new Customer(req.body);
   customer.save()
@@ -17,26 +20,39 @@ customerRoutes.route('/add').post(function (req, res) {
     });
 });
 
-// Defined get data(index or listing) route
+/**
+* Get index or listing route
+* @returns {json} array of customer objects if successful, or error object.
+*/
 customerRoutes.route('/').get(function (req, res) {
   Customer.find(function (err, customers) {
     if (err) {
-      console.log(err);
+      res.json(err);
     } else {
       res.json(customers);
     }
   });
 });
 
-// Defined get single item by id route
+/**
+* Get single item by id route
+* @returns {json} customer data if successful, or error object.
+*/
 customerRoutes.route('/get/:id').get(function (req, res) {
   var id = req.params.id;
   Customer.findById(id, function (err, customer) {
-    res.json(customer);
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(customer);
+    }
   });
 });
 
-// Defined update route
+/**
+* Update route
+* @returns {json} customer data if successful, or error object.
+*/
 customerRoutes.route('/update/:id').post(function (req, res) {
   Customer.findById(req.params.id, function (err, customer) {
     if (!customer)
@@ -55,7 +71,10 @@ customerRoutes.route('/update/:id').post(function (req, res) {
   });
 });
 
-// Defined delete route
+/**
+* Delete route
+* @returns {json} customer data if successful, or error object.
+*/
 customerRoutes.route('/delete/:id').get(function (req, res) {
   Customer.findByIdAndRemove({
     _id: req.params.id

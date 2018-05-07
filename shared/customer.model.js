@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// Define collection and schema for Customers
+
+// MongoDB schema for Customers
 var CustomerSchema = new Schema({
   name: {
     first: String,

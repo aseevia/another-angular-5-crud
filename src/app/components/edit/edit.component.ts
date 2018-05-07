@@ -4,6 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomerObj } from '../../customer';
 
+  /**
+  * EditComponent
+  * Creates form and provide methods
+  * for editing or deleting a customer.
+  */
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -29,6 +35,10 @@ export class EditComponent implements OnInit {
     this.createForm();
   }
 
+ /**
+ * createForm()
+ * Creates Angular's reactive form with validators
+ */
   createForm() {
     this.angForm = this.fb.group({
       fname: ['', Validators.required],
@@ -38,6 +48,15 @@ export class EditComponent implements OnInit {
     });
   }
 
+  /**
+  * updateCustomer
+  * Send request to the CustomerService to fetch the customer by id,
+  * and then update with the info in params:
+  * @param {string} fname - new first name.
+  * @param {string} lname - new last name.
+  * @param {string} birthday - new birthday.
+  * @param {string} gender - new gender.
+  */
   updateCustomer(fname, lname, birthday, gender) {
     this.route.params.subscribe(params => {
       this.service.updateCustomer(fname, lname, birthday, gender, params['id'])
@@ -53,6 +72,11 @@ export class EditComponent implements OnInit {
     });
   }
 
+  /**
+  * deleteCustomer
+  * Send request to the CustomerService to delete customer by id.
+  * @param id - id of the customer to delete.
+  */
   deleteCustomer(id) {
     this.service.deleteCustomer(id).subscribe(res => {
       console.log('Deleted id# ' + res['_id']);
@@ -62,6 +86,10 @@ export class EditComponent implements OnInit {
     });
   }
 
+  /**
+  * Send request to the CustomerService to get customer by id,
+  * populate the edit form with received data.
+  */
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.service.getCustomer(params['id']).subscribe(res => {

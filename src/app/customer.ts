@@ -1,3 +1,9 @@
+  /**
+  * class CustomerObj
+  *
+  * TypeScript schema for customer object.
+  */
+
 export class CustomerObj {
     _id: string;
     name: {

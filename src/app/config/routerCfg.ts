@@ -3,7 +3,10 @@ import { CreateComponent } from '../components/create/create.component';
 import { EditComponent } from '../components/edit/edit.component';
 import { IndexComponent } from '../components/index/index.component';
 
-// Routes
+/**
+ * Routes for the Angular app.
+ * Server API routes can be found in /shared/customerRoutes.js
+ */
 
 export const appRoutes: Routes = [
   {

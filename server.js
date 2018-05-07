@@ -3,8 +3,8 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   cors = require('cors'),
   mongoose = require('mongoose'),
-  config = require('./shared/dbCfg'),
-  customerRoutes = require('./shared/customerRoutes');
+  config = require('./shared/dbCfg'),  
+  customerRoutes = require('./shared/customerRoutes'); // Routes to handle API requests
 
 mongoose.Promise = global.Promise;
 
@@ -31,7 +31,7 @@ app.use(cors());
 
 app.use('/customers', customerRoutes);
 
-// For all GET requests, send back index.html
+// For all other GET requests, send back index.html
 // so that PathLocationStrategy can be used
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/index.html'));
