@@ -3,6 +3,8 @@ import { CreateComponent } from '../components/create/create.component';
 import { EditComponent } from '../components/edit/edit.component';
 import { IndexComponent } from '../components/index/index.component';
 
+// Routes
+
 export const appRoutes: Routes = [
   {
     path: '',

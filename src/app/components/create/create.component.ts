@@ -24,6 +24,7 @@ export class CreateComponent implements OnInit {
       gender: ['', Validators.required]
     });
   }
+
   addCustomer(fname, lname, birthday, gender) {
     this.service.addCustomer(fname, lname, birthday, gender).subscribe(res => {
       console.log('Added id# ' + res['_id']);
