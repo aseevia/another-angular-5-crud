@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /dist-server
+/public
 /tmp
 /out-tsc
 
@@ -10,6 +11,7 @@
 /node_modules
 
 # IDEs and editors
+.env
 /.idea
 .project
 .classpath
