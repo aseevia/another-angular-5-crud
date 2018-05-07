@@ -44,8 +44,12 @@ export class EditComponent implements OnInit {
         .subscribe(res => {
           console.log('Done updating id# ' + res['_id']);
           this.router.navigate(['index']);
+        }, err => {
+          console.log(err);
         });
 
+    }, err => {
+      console.log(err);
     });
   }
 
@@ -53,6 +57,8 @@ export class EditComponent implements OnInit {
     this.service.deleteCustomer(id).subscribe(res => {
       console.log('Deleted id# ' + res['_id']);
       this.router.navigate(['index']);
+    }, err => {
+      console.log(err);
     });
   }
 
@@ -61,6 +67,8 @@ export class EditComponent implements OnInit {
       this.service.getCustomer(params['id']).subscribe(res => {
         console.log('Fetched id# ' + res['_id']);
         this.customer = res;
+      }, err => {
+        console.log(err);
       });
     });
   }

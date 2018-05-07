@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../customer.service';
 import { CustomerObj } from '../../customer';
@@ -13,7 +13,9 @@ export class IndexComponent implements OnInit {
 
   customers: CustomerObj[];
 
-  constructor(private http: HttpClient, private service: CustomerService) {}
+  constructor(
+    // private http: HttpClient,
+    private service: CustomerService) {}
 
   ngOnInit() {
     this.getCustomers();
@@ -23,6 +25,8 @@ export class IndexComponent implements OnInit {
     this.service.getCustomers().subscribe(res => {
       console.log('Done fetching customers');
       this.customers = res;
+    }, err => {
+      console.log(err);
     });
   }
 
@@ -30,6 +34,8 @@ export class IndexComponent implements OnInit {
     this.service.deleteCustomer(id).subscribe(res => {
       console.log('Deleted id# ' + res['_id']);
       this.getCustomers();
+    }, err => {
+      console.log(err);
     });
   }
 

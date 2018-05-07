@@ -1,9 +1,8 @@
 var express = require('express');
-//var mongoose = require('mongoose');
 var app = express();
 var customerRoutes = express.Router();
 
-// Require Item model in our routes module
+// Require Customer model in our routes module
 var Customer = require('./customer.model');
 
 // Defined store route
@@ -29,7 +28,7 @@ customerRoutes.route('/').get(function (req, res) {
   });
 });
 
-// Defined edit route
+// Defined get single item by id route
 customerRoutes.route('/get/:id').get(function (req, res) {
   var id = req.params.id;
   Customer.findById(id, function (err, customer) {
@@ -37,7 +36,7 @@ customerRoutes.route('/get/:id').get(function (req, res) {
   });
 });
 
-//  Defined update route
+// Defined update route
 customerRoutes.route('/update/:id').post(function (req, res) {
   Customer.findById(req.params.id, function (err, customer) {
     if (!customer)

@@ -7,7 +7,10 @@ const express = require('express'),
   customerRoutes = require('./shared/customerRoutes');
 
 mongoose.Promise = global.Promise;
-var db = mongoose.connect(process.env.MONGODB_URI).then(
+
+// Establish database connection
+var dbUri = process.env.MONGODB_URI || config.DB;
+var db = mongoose.connect(dbUri).then(
   () => {
     console.log('Database is connected')
   },
@@ -24,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(cors());
+
+
 app.use('/customers', customerRoutes);
 
 // For all GET requests, send back index.html
